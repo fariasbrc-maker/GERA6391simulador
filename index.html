@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GERA TRI Compacto</title>
+<title>GERA TRI V3.1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -18,7 +17,7 @@ body{background:#003B7A;color:#fff;font-family:'Outfit',sans-serif;max-width:850
 .painel{display:flex;gap:6px;margin:10px 0}
 .info{flex:1;background:#0D4B99;padding:8px;border-radius:10px;text-align:center}
 .numero{display:block;font-size:18px;font-weight:800;color:#FF6200}
-.card{display:flex;align-items:center;gap:12px;background:#fff;color:#003B7A;padding:12px 14px;border-radius:16px;margin-bottom:8px}
+.card{display:flex;align-items:center;gap:12px;background:#fff;color:#003B7A;padding:10px 12px;border-radius:16px;margin-bottom:6px}
 .icone{font-size:26px}
 .texto{flex:1}
 .texto h3{font-size:16px;margin-bottom:2px}
@@ -35,7 +34,6 @@ input{width:90px;height:42px;border:none;border-radius:10px;background:#f0f0f0;t
 </style>
 </head>
 <body>
-
 <div class="header">
 <div class="logo">🚀</div>
 <div class="titulo">SIMULADOR GERA TRI</div>
@@ -43,23 +41,23 @@ input{width:90px;height:42px;border:none;border-radius:10px;background:#f0f0f0;t
 </div>
 
 <div class="painel">
-<div class="info">🎯 META<span class="numero">10</span></div>
-<div class="info">🏆 PONTOS<span class="numero" id="placar">0</span></div>
+<div class="info">🎯 META<span class="numero">1.200</span></div>
+<div class="info">🏆 PONTOS<span class="numero" id="placar">0,00</span></div>
 <div class="info">📈 %<span class="numero" id="percentual">0%</span></div>
 </div>
 
-<div class="card"><div class="icone">⚖️</div><div class="texto"><h3>Equilíbrio</h3><p>Meta: 23.955</p></div><div class="campo"><label>Realizado</label><input id="r1" type="number"></div></div>
-<div class="card"><div class="icone">🛡️</div><div class="texto"><h3>Proteção</h3><p>Meta: 170</p></div><div class="campo"><label>Realizado</label><input id="r2" type="number"></div></div>
-<div class="card"><div class="icone">💰</div><div class="texto"><h3>Recuperação</h3><p>Meta: 1.685</p></div><div class="campo"><label>Realizado</label><input id="r3" type="number"></div></div>
-<div class="card"><div class="icone">🏠</div><div class="texto"><h3>Aquisição</h3><p>Meta: 53.552</p></div><div class="campo"><label>Realizado</label><input id="r4" type="number"></div></div>
-<div class="card"><div class="icone">🔥</div><div class="texto"><h3>Engajamento</h3><p>Meta: 22</p></div><div class="campo"><label>Realizado</label><input id="r5" type="number"></div></div>
-<div class="card"><div class="icone">🍀</div><div class="texto"><h3>Sorte</h3><p>Meta: 130</p></div><div class="campo"><label>Realizado</label><input id="r6" type="number"></div></div>
-<div class="card"><div class="icone">🤝</div><div class="texto"><h3>Benefícios</h3><p>Meta: 10</p></div><div class="campo"><label>Realizado</label><input id="r7" type="number"></div></div>
+<div class="card"><div class="icone">⚖️</div><div class="texto"><h3>Equilíbrio</h3><p>Valor do Item: 280 pts</p></div><div class="campo"><label>Realizado</label><input id="r1" type="number"></div></div>
+<div class="card"><div class="icone">🛡️</div><div class="texto"><h3>Proteção</h3><p>Valor do Item: 240 pts</p></div><div class="campo"><label>Realizado</label><input id="r2" type="number"></div></div>
+<div class="card"><div class="icone">💰</div><div class="texto"><h3>Recuperação</h3><p>Valor do Item: 140 pts</p></div><div class="campo"><label>Realizado</label><input id="r3" type="number"></div></div>
+<div class="card"><div class="icone">🏠</div><div class="texto"><h3>Aquisição</h3><p>Valor do Item: 120 pts</p></div><div class="campo"><label>Realizado</label><input id="r4" type="number"></div></div>
+<div class="card"><div class="icone">🔥</div><div class="texto"><h3>Engajamento</h3><p>Valor do Item: 80 pts</p></div><div class="campo"><label>Realizado</label><input id="r5" type="number"></div></div>
+<div class="card"><div class="icone">🍀</div><div class="texto"><h3>Sorte</h3><p>Valor do Item: 80 pts</p></div><div class="campo"><label>Realizado</label><input id="r6" type="number"></div></div>
+<div class="card"><div class="icone">🤝</div><div class="texto"><h3>Benefícios</h3><p>Valor do Item: 30 pts</p></div><div class="campo"><label>Realizado</label><input id="r7" type="number"></div></div>
 
 <button class="botao" onclick="calcular()">🚀 CALCULAR</button>
 
 <div class="resultado">
-<div class="pontuacao" id="resultado">0</div>
+<div class="pontuacao" id="resultado">0,00</div>
 <div class="mensagem" id="mensagem">Preencha os campos</div>
 <div class="barra"><div class="progresso" id="barra"></div></div>
 </div>
@@ -77,12 +75,11 @@ total+=r/(dados[i-1].d/dados[i-1].v);
 }
 document.getElementById('resultado').innerHTML=total.toFixed(2);
 document.getElementById('placar').innerHTML=total.toFixed(2);
-let p=Math.min((total/10)*100,100);
-document.getElementById('percentual').innerHTML=p.toFixed(0)+'%';
+let p=Math.min((total/1200)*100,100);
+document.getElementById('percentual').innerHTML=p.toFixed(2)+'%';
 document.getElementById('barra').style.width=p+'%';
 document.getElementById('mensagem').innerHTML=total<4?'🚀 Vamos acelerar!':(total<7?'👏 Bom desempenho!':'🏆 Excelente resultado!');
 }
 </script>
-
 </body>
 </html>
