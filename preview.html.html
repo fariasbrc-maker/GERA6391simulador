@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIMULADOR GERA TRI - EQUIPE 6391</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#003B7A;font-family:'Outfit',sans-serif;color:white;max-width:850px;margin:auto;padding:12px}
+.header{text-align:center;margin-bottom:12px}
+.logo{font-size:32px}
+.titulo{font-size:24px;font-weight:800}
+.subtitulo{font-size:13px;color:#FFD4A6}
+.painel{display:flex;gap:8px;margin:12px 0}
+.info{flex:1;background:#0D4B99;padding:10px;border-radius:12px;text-align:center}
+.numero{display:block;font-size:18px;font-weight:800;color:#FF6200}
+.card{background:#fff;color:#003B7A;border-radius:16px;padding:12px;margin-bottom:10px}
+.icone{font-size:24px}
+.card h3{font-size:17px;margin:3px 0}
+.card p{font-size:12px}
+.label{font-size:13px;margin:8px 0 4px}
+input{width:100%;padding:10px;font-size:16px;border:none;border-radius:10px;background:#F3F4F6}
+.botao{width:100%;padding:14px;font-size:18px;font-weight:800;background:#FF6200;color:white;border:none;border-radius:12px;margin-top:8px}
+.resultado{background:white;color:#003B7A;padding:18px;border-radius:16px;margin-top:10px;text-align:center}
+.pontuacao{font-size:34px;font-weight:800}
+.mensagem{font-size:15px;margin-top:8px}
+.barra{height:12px;background:#ddd;border-radius:12px;overflow:hidden;margin-top:10px}
+.progresso{height:100%;width:0;background:#FF6200;transition:1s}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo">🚀</div>
+<div class="titulo">SIMULADOR GERA TRI</div>
+<div class="subtitulo">Equipe 6391 • Acompanhe sua performance</div>
+</div>
+
+<div class="painel">
+<div class="info">🎯 META<span class="numero">10</span></div>
+<div class="info">🏆 PONTUAÇÃO<span class="numero" id="placar">0</span></div>
+<div class="info">📈 PROGRESSO<span class="numero" id="percentual">0%</span></div>
+</div>
+
+<div class="card"><div class="icone">⚖️</div><h3>Equilíbrio de Contas</h3><p>Meta: 23.955</p><div class="label">Realizado</div><input id="r1" type="number"></div>
+<div class="card"><div class="icone">🛡️</div><h3>Proteção</h3><p>Meta: 170</p><div class="label">Realizado</div><input id="r2" type="number"></div>
+<div class="card"><div class="icone">💰</div><h3>Recuperação</h3><p>Meta: 1.685</p><div class="label">Realizado</div><input id="r3" type="number"></div>
+<div class="card"><div class="icone">🏠</div><h3>Aquisição de Bens</h3><p>Meta: 53.552</p><div class="label">Realizado</div><input id="r4" type="number"></div>
+<div class="card"><div class="icone">🔥</div><h3>Engajamento</h3><p>Meta: 22</p><div class="label">Realizado</div><input id="r5" type="number"></div>
+<div class="card"><div class="icone">🍀</div><h3>Sorte</h3><p>Meta: 130</p><div class="label">Realizado</div><input id="r6" type="number"></div>
+<div class="card"><div class="icone">🤝</div><h3>Benefícios de Relacionamento</h3><p>Meta: 10</p><div class="label">Realizado</div><input id="r7" type="number"></div>
+
+<button class="botao" onclick="calcular()">🚀 CALCULAR PONTUAÇÃO</button>
+
+<div class="resultado">
+<h2>Resultado Atual</h2>
+<div class="pontuacao" id="resultado">0</div>
+<div class="mensagem" id="mensagem">Preencha os campos para iniciar</div>
+<div class="barra"><div class="progresso" id="barraProgresso"></div></div>
+</div>
+
+<script>
+function calcular(){
+let total=0;
+const dados=[
+{desafio:6707332,valor:280},
+{desafio:40791,valor:240},
+{desafio:235907,valor:140},
+{desafio:6426269,valor:120},
+{desafio:1792,valor:80},
+{desafio:10375,valor:80},
+{desafio:309,valor:30}
+];
+for(let i=1;i<=7;i++){
+let realizado=parseFloat(document.getElementById("r"+i).value)||0;
+let meta=dados[i-1].desafio/dados[i-1].valor;
+total+=realizado/meta;
+}
+document.getElementById("resultado").innerHTML=total.toFixed(2);
+document.getElementById("placar").innerHTML=total.toFixed(2);
+let percentual=(total/10)*100;
+if(percentual>100) percentual=100;
+document.getElementById("percentual").innerHTML=percentual.toFixed(1)+"%";
+document.getElementById("barraProgresso").style.width=percentual+"%";
+let msg="";
+if(total<4) msg="🚀 Vamos acelerar! Ainda há muito potencial para crescer.";
+else if(total<7) msg="👏 Bom desempenho! Continue nesse ritmo.";
+else msg="🏆 Excelente resultado! Você está voando.";
+document.getElementById("mensagem").innerHTML=msg;
+}
+</script>
+</body>
+</html>
